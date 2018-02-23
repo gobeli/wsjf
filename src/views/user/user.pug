@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  section.hero.is-light
+    .hero-body
+      .container
+        h1.title User Information
+  .columns.is-centered.is-marginless
+    .column.is-5
+      .box
+        .content
+          p
+            strong= user.displayName
+            br
+            if (user.googleId && user.googleToken)
+              span Authenticated with Google  
+  

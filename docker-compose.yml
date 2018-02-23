@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+  app:
+    build: .
+    depends_on: 
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/var/www/app/src
+      - .env:/var/www/app/.env
+    command: npm run dev
