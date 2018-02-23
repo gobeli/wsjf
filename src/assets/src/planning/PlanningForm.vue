@@ -10,23 +10,16 @@
   </form>
 </template>
 <script>
+import { request } from '../helper';
+
 export default {
   data: () => ({
     name: ''
   }),
   methods: {
-    submit() {
-      fetch('/wsjf/planning', { 
-        method: 'POST', 
-        body: JSON.stringify({ name: this.name }),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include'
-      })
-        .then(() => {
-          location.reload();
-        });
+    async submit() {
+      await request({ url: '/wsjf/planning', method: 'POST', body: JSON.stringify({ name: this.name }) })
+      location.reload();
     }
   }
 }
