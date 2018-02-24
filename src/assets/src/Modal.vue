@@ -5,28 +5,39 @@
 </style>
 <template>
   <div class="modal animated fadeIn" :class="{'is-active': open, 'fadeOut': modalFadeOut}">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="box">
-        <div class="content">
-          <slot></slot>
-        </div>
-      </div>
+    <div class="modal-background" @click="closeModal"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{title}}</p>
+        <button class="delete" aria-label="close" @click="closeModal"></button>
+      </header>
+      <section class="modal-card-body">
+        <slot></slot>
+      </section>
     </div>
-    <button class="modal-close is-large" aria-label="close" @click="closeModal"></button>
   </div>
 </template>
 <script>
 export default {
-  props: ['open'],
+  props: ['open', 'title'],
   data: () => ({
     modalFadeOut: false
   }),
+  mounted() {
+    document.addEventListener('keyup', e => {
+      if (e.keyCode === 27) {
+        this.closeModal();
+      }
+    });
+  },
   methods: {
     closeModal() {
+      if (!this.open) {
+        return;
+      }
       this.modalFadeOut = true;
       setTimeout(() => {
-        this.modalFadeOut = false; 
+        this.modalFadeOut = false;
         this.$emit('update:open', false);
       }, 300);
     }

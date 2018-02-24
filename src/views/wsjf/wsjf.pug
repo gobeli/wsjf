@@ -1,13 +1,13 @@
 extends ../layout
 
 block content
-  script.
-    const plannings = !{JSON.stringify(plannings)};
   section.hero.is-light
     .hero-body
       .container
         h1.title Plannings
-  .container
-    #wsjf
-      wsjf-app
+  .columns.is-centered.is-marginless
+    .column.is-8
+      #wsjf
+        router-view
+
   script(src="/js/build.js")

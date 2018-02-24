@@ -1,12 +1,16 @@
 import Vue from 'vue';
-import App from './App.vue';
-import Modal from './Modal.vue';
-import PlanningForm from './planning/PlanningForm.vue';
 
-Vue.component('wsjf-planning-form', PlanningForm);
+import Buefy from 'buefy'
+import 'buefy/lib/buefy.css'
+
+import Modal from './Modal.vue';
+import routes from './routes';
+
+Vue.use(Buefy);
+
 Vue.component('wsjf-modal', Modal);
 
 new Vue({
   el: '#wsjf',
-  render: h => h(App)
+  router: routes
 })
