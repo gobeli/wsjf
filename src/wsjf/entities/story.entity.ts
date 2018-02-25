@@ -5,25 +5,25 @@ import { Planning } from "./planning.entity";
 export class Story {
   @PrimaryGeneratedColumn()
   id: number;
-  
+
   @Column()
   name: string;
 
-  @Column()
+  @Column({ default: 0 })
   businessValue: number;
-  
-  @Column()
+
+  @Column({ default: 0})
   timeCriticallity: number;
 
-  @Column()
+  @Column({ default: 0 })
   riskOpportunity: number;
 
-  @Column()
+  @Column({ default: 0 })
   jobSize: number;
 
   @ManyToOne(type => Planning, planning => planning.stories)
   planning: Planning;
 
-  @CreateDateColumn() 
+  @CreateDateColumn()
   created: Date;
 }

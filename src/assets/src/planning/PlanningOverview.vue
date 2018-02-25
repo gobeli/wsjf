@@ -8,19 +8,22 @@
             <b-table-column label="Name">
                 {{ props.row.name }}
             </b-table-column>
-            <b-table-column width="120">
+            <b-table-column width="160">
               <button class="button is-text" @click="edit(props.row)">
                 <i class="mdi mdi-pencil"></i>
               </button>
               <button class="button is-text" @click="remove(props.row)">
                 <i class="mdi mdi-close"></i>
               </button>
+              <b-tooltip label="Start estimation">
+                <router-link class="button is-text" :to="'/planning/' + props.row.id">
+                  <i class="mdi mdi-send"></i>
+                </router-link>
+              </b-tooltip>
             </b-table-column>
         </template>
         <template slot="detail" slot-scope="props">
-          <ul>
-            <li v-for="story in props.row.stories" :key="story.id">{{story.name}}</li>
-          </ul>
+          <wsjf-planning-detail :planning.sync="props.row"></wsjf-planning-detail>
         </template>
     </b-table>
     <button class="button is-primary" @click="edit({})">Add</button>
@@ -30,7 +33,7 @@
           <p class="modal-card-title">Edit</p>
         </header>
         <section class="modal-card-body">
-          <wsjf-planning-form :planning="planningToEdit"></wsjf-planning-form>
+          <wsjf-planning-form :planning.sync="planningToEdit"></wsjf-planning-form>
         </section>
       </div>
     </b-modal>
@@ -39,6 +42,7 @@
 <script>
 import { request  } from '../helper';
 import PlanningForm from './PlanningForm.vue';
+import PlanningDetail from './PlanningDetail.vue';
 
 export default {
   data: () => ({
@@ -73,7 +77,8 @@ export default {
     }
   },
   components: {
-    'wsjf-planning-form': PlanningForm
+    'wsjf-planning-form': PlanningForm,
+    'wsjf-planning-detail': PlanningDetail
   }
 }
 </script>

@@ -10,7 +10,6 @@ import { UserService } from '../shared/user/user.service';
 @UseGuards(AuthGuard)
 export class PlanningController {
   constructor(
-    @InjectRepository(Story) private storyRepository: Repository<Story>,
     @InjectRepository(Planning) private planningRepository: Repository<Planning>,
     private userService: UserService
   ){}
@@ -22,6 +21,11 @@ export class PlanningController {
   @Get('')
   async index(@Res() res) {
     res.render('wsjf/wsjf');
+  }
+
+  @Get('planning/:id')
+  async getOne(@Param('id') id) {
+    return await this.planningRepository.findOneById(id);
   }
 
   @Get('planning')

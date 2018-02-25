@@ -1,3 +1,4 @@
+import { StoryController } from './story.controller';
 import { PlanningController } from './planning.controller';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,7 +11,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     TypeOrmModule.forFeature([Planning, Story])
   ],
-  controllers: [PlanningController]
+  controllers: [PlanningController, StoryController]
 })
 export class WsjfModule {
 
