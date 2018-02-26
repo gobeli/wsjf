@@ -25,7 +25,7 @@ export class PlanningController {
 
   @Get('planning/:id')
   async getOne(@Param('id') id) {
-    return await this.planningRepository.findOneById(id);
+    return await this.planningRepository.findOneById(id, { relations: ['stories'] });
   }
 
   @Get('planning')

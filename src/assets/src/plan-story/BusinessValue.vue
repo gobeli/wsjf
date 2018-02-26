@@ -1,9 +1,5 @@
 <template>
   <div>
-
-    <p class="content">
-      Bla
-    </p>
     <wsjf-compare-stories></wsjf-compare-stories>
   </div>
 </template>
