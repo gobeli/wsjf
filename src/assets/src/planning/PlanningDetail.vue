@@ -4,7 +4,7 @@
       <div class="column is-4" v-for="story in stories" :key="story.id">
         <div class="card">
           <header class="card-header">
-            <p class="card-header-title">Prio: {{getPrio(story)}}</p>
+            <p class="card-header-title is-marginless">Prio: {{getPrio(story)}}</p>
             <a @click="remove(story)" class="card-header-icon" aria-label="more options">
               <span class="icon">
                 <i class="mdi mdi-close" aria-hidden="true"></i>
@@ -12,7 +12,7 @@
             </a>
           </header>
           <div class="card-content">
-            <p class="title is-6">{{story.name}}</p>
+            <p class="title is-6 is-marginless">{{story.name}}</p>
           </div>
           <footer class="card-footer">
             <div class="card-footer-item">Job size: {{story.jobSize || 0}}</div>

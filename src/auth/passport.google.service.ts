@@ -34,7 +34,7 @@ export class PassportGoogleService extends OAuth2Strategy {
       return done(null, u);
     });
 
-    this['_oauth2'].setAgent(proxyAgent);
+    // this['_oauth2'].setAgent(proxyAgent);
 
     passport.use(this);
 
