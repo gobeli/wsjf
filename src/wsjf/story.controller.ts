@@ -15,7 +15,7 @@ export class StoryController {
   async saveStory(@Body() story: Story) {
     if (story.id) {
       const s = await this.storyRepository.findOneById(story.id);
-      story = Object.assign(story, s);
+      story = Object.assign(s, story);
     }
     if (story.planning) {
       const planning = await this.planningRepository.findOneById(story.planning.id);

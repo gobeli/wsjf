@@ -18,5 +18,5 @@ services:
       - "3000:3000"
     volumes:
       - ./src:/var/www/app/src
-      - .env:/var/www/app/.env
+      - ./.env:/var/www/app/.env
     command: npm run dev

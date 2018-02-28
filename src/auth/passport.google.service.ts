@@ -6,8 +6,8 @@ import { UserService } from '../shared/user/user.service';
 import { IUserModel } from '../shared/user/user.model';
 import User from '../shared/user/user.entity';
 
-// const proxy = {host:'proxy.corproot.net',port:8079};
-// const proxyAgent = new HttpsProxyAgent(proxy);
+const proxy = {host:'proxy.corproot.net',port:8079};
+const proxyAgent = new HttpsProxyAgent(proxy);
 const { HOST, HOST_PORT, HOST_SCHEMA, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
 
 @Component()
@@ -34,7 +34,7 @@ export class PassportGoogleService extends OAuth2Strategy {
       return done(null, u);
     });
 
-    // this['_oauth2'].setAgent(proxyAgent);
+    this['_oauth2'].setAgent(proxyAgent);
 
     passport.use(this);
 

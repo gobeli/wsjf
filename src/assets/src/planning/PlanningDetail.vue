@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="columns is-multiline">
-      <div class="column is-4" v-for="story in planning.stories" :key="story.id">
+      <div class="column is-4" v-for="story in stories" :key="story.id">
         <div class="card">
           <header class="card-header">
-            <p class="card-header-title"></p>
+            <p class="card-header-title">Prio: {{getPrio(story)}}</p>
             <a @click="remove(story)" class="card-header-icon" aria-label="more options">
               <span class="icon">
                 <i class="mdi mdi-close" aria-hidden="true"></i>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <button class="button is-primary" @click="edit({})">Add</button>
+    <button class="button is-primary" @click="edit({})">Add Story</button>
     <b-modal :active.sync="storyModalOpen" has-modal-card>
       <div class="modal-card" style="width: auto">
         <header class="modal-card-head">
@@ -44,6 +44,13 @@ export default {
     storyModalOpen: false,
   }),
   props: ['planning'],
+  computed: {
+    stories() {
+      return this.planning.stories
+        .map(s => ({...s, prio: this.getPrio(s)}))
+        .sort((a,b) => b.prio-a.prio);
+    }
+  },
   methods: {
     edit(story) {
       this.storyToEdit = story;
@@ -64,7 +71,6 @@ export default {
     },
     updateStory(story) {
       const s = this.planning.stories.find(s => s.id === story.id);
-      console.log(s, story);
       if (!s) {
         this.planning.stories = [...this.planning.stories, story];
       } else {
@@ -72,6 +78,10 @@ export default {
         this.planning.stories[i] = story;
       }
       this.storyModalOpen = false;
+    },
+    getPrio(story) {
+      const prio = ((story.businessValue || 0) + (story.timeCriticallity || 0) + (story.riskOpportunity || 0)) / story.jobSize;
+      return isNaN(prio) ? 'n/a' : prio.toFixed(3);
     }
   },
   components: {

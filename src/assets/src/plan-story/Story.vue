@@ -12,6 +12,9 @@
         <li :class="{'is-active': isActive('risk-opportunity')}">
           <router-link :to="{ name: 'risk-opportunity',  params: { id: $route.params.id }}">Risk / Opportunity</router-link>
         </li>
+        <li :class="{'is-active': isActive('job-size')}">
+          <router-link :to="{ name: 'job-size',  params: { id: $route.params.id }}">Job Size</router-link>
+        </li>
       </ul>
     </div>
     <router-view></router-view>

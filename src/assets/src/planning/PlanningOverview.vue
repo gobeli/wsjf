@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-table
+        class="content"
         :data="plannings"
         detailed
         detail-key="id">
@@ -26,7 +27,7 @@
           <wsjf-planning-detail :planning.sync="props.row"></wsjf-planning-detail>
         </template>
     </b-table>
-    <button class="button is-primary" @click="edit({})">Add</button>
+    <button class="button is-primary" @click="edit({})">Add Planning</button>
     <b-modal :active.sync="planningModalOpen" has-modal-card>
       <div class="modal-card" style="width: auto">
         <header class="modal-card-head">

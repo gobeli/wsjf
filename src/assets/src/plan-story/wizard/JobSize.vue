@@ -1,10 +1,10 @@
 <template>
   <div>
-    <wsjf-compare-stories></wsjf-compare-stories>
+    <wsjf-compare-stories type="jobSize"></wsjf-compare-stories>
   </div>
 </template>
 <script>
-  import CompareStories from './CompareStories.vue';
+  import CompareStories from '../CompareStories.vue';
 
   export default {
     components: {
