@@ -1,0 +1,5 @@
+{
+  "watch": ["src"],
+  "ext": "scss",
+  "exec": "npm run css:build"
+}

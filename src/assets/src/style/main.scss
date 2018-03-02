@@ -1,0 +1,30 @@
+@import "../../../../node_modules/bulma/sass/utilities/_all";
+
+$primary: #6a89cc;
+$primary-invert: findColorInvert($primary);
+$danger: #e55039;
+$danger-invert: findColorInvert($danger);
+$success: #16a085;
+$success-inver: findColorInvert($success);
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: (
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $primary-invert),
+    "info": ($info, $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger": ($danger, $danger-invert),
+    "twitter": ($twitter, $twitter-invert)
+);
+
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+@import '../../../../node_modules/bulma/bulma';
+@import '../../../../node_modules/buefy/src/scss/buefy';

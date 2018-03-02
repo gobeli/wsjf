@@ -8,8 +8,10 @@
     "start:watch": "nodemon -L",
     "prestart:prod": "tsc",
     "start:prod": "node dist/main.js",
-    "frontend": "cross-env NODE_ENV=development webpack --watch --watch-poll=1000",
-    "dev": "concurrently --kill-others \"npm run start:watch\" \"npm run frontend\""
+    "frontend:watch": "cross-env NODE_ENV=development webpack --watch --watch-poll=1000",
+    "css:build": "node-sass --include-path scss src/assets/src/style/main.scss src/assets/css/main.css",
+    "css:watch": "nodemon -L --config nodemon-styles.json",
+    "dev": "concurrently --kill-others \"npm run start:watch\" \"npm run frontend:watch\" \"npm run css:watch\"",
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.3",
