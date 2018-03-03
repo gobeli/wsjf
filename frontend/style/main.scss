@@ -17,8 +17,7 @@ $colors: (
     "info": ($info, $info-invert),
     "success": ($success, $success-invert),
     "warning": ($warning, $warning-invert),
-    "danger": ($danger, $danger-invert),
-    "twitter": ($twitter, $twitter-invert)
+    "danger": ($danger, $danger-invert)
 );
 
 // Links
@@ -26,5 +25,5 @@ $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
-@import '../../../../node_modules/bulma/bulma';
-@import '../../../../node_modules/buefy/src/scss/buefy';
+@import '../node_modules/bulma/bulma';
+@import '../node_modules/buefy/src/scss/buefy';

@@ -13,7 +13,7 @@
     "outDir": "./dist"
   },
   "include": [
-    "src/**/*"
+    "backend/**/*"
   ],
   "exclude": [
     "node_modules",

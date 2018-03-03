@@ -12,11 +12,12 @@ services:
       - MYSQL_DATABASE=${DB_DATABASE}
   app:
     build: .
-    depends_on: 
+    depends_on:
       - db
     ports:
       - "3000:3000"
     volumes:
-      - ./src:/var/www/app/src
+      - ./backend:/var/www/app/backend
+      - ./frontend:/var/www/app/frontend
       - ./.env:/var/www/app/.env
     command: npm run dev

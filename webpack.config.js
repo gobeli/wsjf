@@ -2,10 +2,10 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/assets/src/main.js',
+  entry: './frontend/main.js',
   watch: true,
   output: {
-    path: path.resolve(__dirname, './src/assets/js'),
+    path: path.resolve(__dirname, './backend/assets/js'),
     filename: 'build.js'
   },
   module: {
