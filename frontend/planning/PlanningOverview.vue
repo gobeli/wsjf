@@ -3,7 +3,9 @@
     <b-table
         class="content"
         :data="plannings"
+        @details-open="openDetails($event)"
         detailed
+        :opened-detailed="[openedDetail]"
         detail-key="id">
         <template slot-scope="props">
             <b-table-column label="Name">
@@ -50,10 +52,12 @@ export default {
     plannings: [],
     planningToEdit: {},
     planningModalOpen: false,
-    planningToDelete: false
+    planningToDelete: false,
+    openedDetail: null
   }),
   mounted() {
     this.getPlannings();
+    this.openedDetail = +this.$route.query.id;
   },
   methods: {
     edit(planning) {
@@ -75,6 +79,10 @@ export default {
     },
     async getPlannings() {
       this.plannings = await request({ url: `/wsjf/planning` }).then(res => res.json());
+    },
+    openDetails(planning) {
+      this.openedDetail = planning.id;
+      this.$router.replace({query: {id: planning.id} });
     }
   },
   components: {

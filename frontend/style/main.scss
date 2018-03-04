@@ -1,12 +1,14 @@
-@import "../../../../node_modules/bulma/sass/utilities/_all";
+@import "../../node_modules/bulma/sass/utilities/_all";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 $primary: #6a89cc;
 $primary-invert: findColorInvert($primary);
 $danger: #e55039;
 $danger-invert: findColorInvert($danger);
 $success: #16a085;
-$success-inver: findColorInvert($success);
-
+$success-invert: findColorInvert($success);
+$family-sans-serif: 'Open Sans', sans-serif;
+$family-primary: $family-sans-serif;
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
     "white": ($white, $black),
@@ -21,9 +23,101 @@ $colors: (
 );
 
 // Links
-$link: $primary;
-$link-invert: $primary-invert;
-$link-focus-border: $primary;
+// $link: $primary;
+// $link-invert: $primary-invert;
+// $link-focus-border: $primary;
 
-@import '../node_modules/bulma/bulma';
-@import '../node_modules/buefy/src/scss/buefy';
+@import '../../node_modules/bulma/bulma';
+@import '../../node_modules/buefy/src/scss/buefy';
+
+html, body {
+  min-height: 100%;
+}
+
+header.login {
+  background-image: linear-gradient(120deg, $primary 0%, lighten($primary, 15) 100%);
+  height: 40vh;
+  .hero-body {
+    display: flex;
+    align-items: center;
+  }
+  h1.title {
+    color: #F5F5F5;
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+}
+
+.login-form {
+  max-width: 400px;
+  width: 95%;
+  margin: auto;
+  margin-top: -$size-normal*3;
+  .card {
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+    padding: $size-normal	* 3;
+    border-radius: $radius;
+    .button {
+      width: 100%;
+      height: 50px;
+    }
+  }
+}
+
+.button.is-social {
+  display: flex;
+  justify-content: flex-start;
+  .icon {
+    height: 2em;
+    width: 2em;
+  }
+}
+
+.steps {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 60px;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: $primary;
+    height: 5px;
+    width: 100%;
+    z-index: -1;
+    margin-top: -12.5px;
+  }
+  .step {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 20px;
+      width: 20px;
+      top: -20px;
+      background-color: #FFF;
+      border: 4px solid $primary;
+      border-radius: 50%;
+    }
+  }
+}
+.steps .step.is-active:before{
+  background-color: $primary;
+}
+
+.button:not(.is-text) {
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  transition: all .15s ease;
+  &:hover {
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+  }
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  }
+}

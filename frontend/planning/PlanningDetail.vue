@@ -22,7 +22,7 @@
       </div>
     </div>
     <button class="button is-primary" @click="edit({})">Add Story</button>
-    <b-modal :active.sync="storyModalOpen" has-modal-card>
+    <b-modal width="700" :active.sync="storyModalOpen" has-modal-card>
       <div class="modal-card" style="width: auto">
         <header class="modal-card-head">
           <p class="modal-card-title">Add Story</p>

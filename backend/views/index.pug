@@ -1,10 +1,14 @@
 extends layout
 
 block content
-  .hero.is-light
+  header.hero.login
     .container.hero-body
-      h1.title Login
-      a.button.is-primary(href='/auth/google')
+      h1.title Weighted shortest job first
+  .login-form
+    .card
+      h2.title Login
+      hr
+      a.button.is-social.is-primary(href='/auth/google')
         span.icon
           i.mdi.mdi-google
         span Login with Google
