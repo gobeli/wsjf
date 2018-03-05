@@ -23,4 +23,14 @@ export class UserService {
   findUserByEmail(email: string) {
     return this.userRepository.findOne({ email: email });
   }
+
+  async authUser(email, password, done) {
+    const user = await this.findUserByEmail(email);
+    if (user) {
+      if (user.validatePassword(password)) {
+        return done(undefined, user);
+      }
+    }
+    return done(undefined, false, { message: "Invalid email or password." });
+  }
 }

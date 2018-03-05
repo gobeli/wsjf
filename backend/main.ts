@@ -15,7 +15,7 @@ async function bootstrap() {
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'pug');
   app.use(express.static(path.join(__dirname, 'assets')));
-  
+
   const sessionrepo = getConnection().getRepository(Session);
 
   app.use(session({
@@ -27,7 +27,11 @@ async function bootstrap() {
   app.use(passport.initialize());
   app.use(passport.session());
 
+
   app.use((req, res, next) => {
+		res.locals.flash = req.session.flash;
+    delete req.session.flash;
+
     if (req.session.passport && req.session.passport.user) {
       res.locals.user = req.session.passport.user;
     }

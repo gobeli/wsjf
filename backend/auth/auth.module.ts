@@ -1,3 +1,4 @@
+import { PassportLocalService } from './passport.local.service';
 import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from "@nestjs/common";
 import { AuthController } from "./auth.controller";
 import { PassportGoogleService } from "./passport.google.service";
@@ -9,7 +10,7 @@ import { SharedModule } from "../shared/shared.module";
 @Module({
   imports: [SharedModule],
   controllers: [AuthController],
-  components: [PassportGoogleService, AuthGuard],
+  components: [PassportGoogleService, PassportLocalService, AuthGuard],
   exports: [AuthGuard]
 })
 export class AuthModule implements NestModule {

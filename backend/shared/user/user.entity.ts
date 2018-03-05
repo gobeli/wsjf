@@ -21,16 +21,16 @@ export default class User {
   @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ default: '' })
   displayName:string;
 
-	@Column()
+	@Column({ default: '' })
   password: string;
 
-  @Column()
+  @Column({ default: '' })
   googleId: string;
 
-  @Column()
+  @Column({ default: '' })
   googleToken: string;
 
   @OneToMany(type => Planning, planning => planning.user, {

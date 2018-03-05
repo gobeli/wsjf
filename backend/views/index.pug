@@ -7,8 +7,9 @@ block content
       h1.title Weighted shortest job first
   .login-form
     .card
+      p= flash && flash.message
       h2.title Login
-      form(action='/local' method='POST')
+      form(action='/auth/local' method='POST')
         .field
           .control.has-icons-left
             input.input.is-medium(type="email" placeholder="Email" name="email")

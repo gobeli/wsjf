@@ -9,9 +9,9 @@ block content
     .column.is-5
       .box
         .content
+          pre= JSON.stringify(user)
           p
             strong= user.displayName
             br
             if (user.googleId && user.googleToken)
-              span Authenticated with Google  
-  
+              span Authenticated with Google

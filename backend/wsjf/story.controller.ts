@@ -21,7 +21,6 @@ export class StoryController {
       const planning = await this.planningRepository.findOneById(story.planning.id);
       story.planning = planning;
     }
-    console.log(story);
     return await this.storyRepository.save(story);
   }
 

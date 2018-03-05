@@ -44,18 +44,32 @@ export class AuthController {
     user = await this.userService.saveUser(user);
     if (user) {
       req.session.flash = { type: 'sucess', message: 'Successfully registered!' };
-      req.session.userId = user.id;
-      return true;
+      return await new Promise<boolean>((resolve, reject) => {
+        req.logIn(user, err => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(true);
+          }
+        });
+      });
     } else {
       return false;
     }
   }
 
   async loginUser(user: User, password, req) {
-    if (user.validatePassword(user.password)) {
+    if (user.validatePassword(password)) {
       req.session.flash = { type: 'sucess', message: 'Successfully logged in!' };
-      req.session.userId = user.id;
-      return true;
+      return await new Promise<boolean>((resolve, reject) => {
+        req.logIn(user, err => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(true);
+          }
+        });
+      });
     }
   }
 }
