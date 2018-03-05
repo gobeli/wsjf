@@ -3,7 +3,6 @@ import { Component } from '@nestjs/common';
 import * as passport from 'passport';
 import * as HttpsProxyAgent from 'https-proxy-agent';
 import { UserService } from '../shared/user/user.service';
-import { IUserModel } from '../shared/user/user.model';
 import User from '../shared/user/user.entity';
 
 const proxy = {host:'proxy.corproot.net',port:8079};
@@ -19,9 +18,8 @@ export class PassportGoogleService extends OAuth2Strategy {
       callbackURL: `${HOST_SCHEMA}://${HOST}:${HOST_PORT}/auth/google/callback`,
       passReqToCallback: true
     }, async (req, accessToken, refreshToken, profile, done) => {
-      const user: IUserModel = {
+      const user = {
         email: profile.emails[0].value,
-        image: profile._json.image.url,
         displayName: profile.displayName,
         googleId: profile.id,
         googleToken: accessToken

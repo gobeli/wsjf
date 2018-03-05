@@ -5,7 +5,7 @@ import User from "./user.entity";
 
 @Component()
 export class UserService {
-  constructor(@InjectRepository(User) private readonly userRepository: Repository<User>) { 
+  constructor(@InjectRepository(User) private readonly userRepository: Repository<User>) {
   }
 
   findById(id) {
@@ -18,5 +18,9 @@ export class UserService {
 
   saveUser(user: User) {
     return this.userRepository.save(user);
+  }
+
+  findUserByEmail(email: string) {
+    return this.userRepository.findOne({ email: email });
   }
 }

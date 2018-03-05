@@ -35,11 +35,18 @@ html, body {
 }
 
 header.login {
-  background-image: linear-gradient(120deg, $primary 0%, lighten($primary, 15) 100%);
-  height: 40vh;
+  .background {
+    position: absolute;
+    background-image: linear-gradient(120deg, $primary 0%, lighten($primary, 15) 100%);
+    transform: skewY(-5deg);
+    transform-origin: 0;
+    height: 60vh;
+    width: 100%;
+  }
   .hero-body {
     display: flex;
     align-items: center;
+    height: 50vh;
   }
   h1.title {
     color: #F5F5F5;
@@ -52,7 +59,7 @@ header.login {
   max-width: 400px;
   width: 95%;
   margin: auto;
-  margin-top: -$size-normal*3;
+  margin-bottom: $size-normal	* 3;
   .card {
     box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
     padding: $size-normal	* 3;

@@ -2,11 +2,25 @@ extends layout
 
 block content
   header.hero.login
+    .background
     .container.hero-body
       h1.title Weighted shortest job first
   .login-form
     .card
       h2.title Login
+      form(action='/local' method='POST')
+        .field
+          .control.has-icons-left
+            input.input.is-medium(type="email" placeholder="Email" name="email")
+            span.icon.is-left
+              i.mdi.mdi-email
+        .field
+          .control.has-icons-left
+            input.input.is-medium(type="password" placeholder="Password" name="password")
+            span.icon.is-left
+              i.mdi.mdi-lock
+        .field
+          button.button.is-primary(type='submit') Login
       hr
       a.button.is-social.is-primary(href='/auth/google')
         span.icon
