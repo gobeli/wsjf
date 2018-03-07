@@ -7,11 +7,38 @@ block content
         h1.title User Information
   .columns.is-centered.is-marginless
     .column.is-5
-      .box
-        .content
-          pre= JSON.stringify(user)
-          p
-            strong= user.displayName
-            br
-            if (user.googleId && user.googleToken)
-              span Authenticated with Google
+      .box.content
+        if flash
+          .notification(class=(flash.type === 'error' ? 'is-danger' : 'is-success'))= flash.message
+        h3 Information
+        form(action='/user/info' method='POST')
+          .field
+            label.label.is-small Email
+            .control
+              input.input(type="email" placeholder="Email" name="email" value=user.email email)
+          .field
+            label.label.is-small Displayname
+            .control
+              input.input(type="text" placeholder="Displayname" name="displayName" value=user.displayName)
+          .field
+            button.button.is-primary(type='submit') Submit
+        h3 Change Password
+        form(action='/user/password' method='POST')
+          .field
+            label.label.is-small Old Password
+            .control
+              input.input(type="password" placeholder="Old Password" name="oldPassword" value="")
+          .field
+            label.label.is-small Password
+            .control
+              input.input(type="password" placeholder="Password" name="password" value="")
+          .field
+            label.label.is-small Repeat Password
+            .control
+              input.input(type="password" placeholder="Repeat Password" name="repeatPassword" value="")
+          .field
+            button.button.is-primary(type='submit') Submit
+        hr
+        p
+          if (user.googleId && user.googleToken)
+            span Authenticated with Google

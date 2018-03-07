@@ -9,7 +9,7 @@ $success: #16a085;
 $success-invert: findColorInvert($success);
 $family-sans-serif: 'Open Sans', sans-serif;
 $family-primary: $family-sans-serif;
-// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+
 $colors: (
     "white": ($white, $black),
     "black": ($black, $white),
@@ -22,11 +22,6 @@ $colors: (
     "danger": ($danger, $danger-invert)
 );
 
-// Links
-// $link: $primary;
-// $link-invert: $primary-invert;
-// $link-focus-border: $primary;
-
 @import '../../node_modules/bulma/bulma';
 @import '../../node_modules/buefy/src/scss/buefy';
 
@@ -38,6 +33,8 @@ header.login {
   .background {
     position: absolute;
     background-image: linear-gradient(120deg, $primary 0%, lighten($primary, 15) 100%);
+    background-size: 400% 400%;
+    animation: Gradient 15s ease infinite;
     transform: skewY(-5deg);
     transform-origin: 0;
     height: 60vh;
@@ -53,6 +50,19 @@ header.login {
     font-size: 2.8rem;
     line-height: 1;
   }
+}
+
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
 
 .login-form {

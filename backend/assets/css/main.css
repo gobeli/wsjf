@@ -7816,6 +7816,8 @@ html, body {
 header.login .background {
   position: absolute;
   background-image: linear-gradient(120deg, #6a89cc 0%, #a3b6e0 100%);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
   transform: skewY(-5deg);
   transform-origin: 0;
   height: 60vh;
@@ -7830,6 +7832,14 @@ header.login h1.title {
   color: #F5F5F5;
   font-size: 2.8rem;
   line-height: 1; }
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%; } }
 
 .login-form {
   max-width: 400px;
