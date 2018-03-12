@@ -10,6 +10,14 @@ import { Controller, Get, Res, Req } from '@nestjs/common';
      res.render('index');
    }
 
+   @Get('register')
+   register(@Req() req, @Res() res) {
+    if (req.session && req.session.passport && req.session.passport.user) {
+      return res.redirect('/user');
+    }
+    res.render('register');
+  }
+
    @Get('logout')
    logout(@Req() req, @Res() res) {
     req.logout();

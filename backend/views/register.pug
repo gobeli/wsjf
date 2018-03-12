@@ -10,7 +10,7 @@ block content
       if flash
         .notification(class=(flash.type === 'error' ? 'is-danger' : 'is-success'))= flash.message
       h2.title Login
-      form(action='/auth/local/login' method='POST')
+      form(action='/auth/local/register' method='POST')
         .field
           .control.has-icons-left
             input.input.is-medium(type="email" placeholder="Email" name="email")
@@ -22,11 +22,16 @@ block content
             span.icon.is-left
               i.mdi.mdi-lock
         .field
-          button.button.is-primary(type='submit') Login
+          .control.has-icons-left
+            input.input.is-medium(type="password" placeholder="Repeat Password" name="repeatPassword")
+            span.icon.is-left
+              i.mdi.mdi-lock
+        .field
+          button.button.is-primary(type='submit') Register
       hr
       a.button.is-social.is-primary(href='/auth/google')
         span.icon
           i.mdi.mdi-google
-        span Login with Google
+        span Register with Google
       hr
-      a(href='/register') Register
+      a(href='/') Login

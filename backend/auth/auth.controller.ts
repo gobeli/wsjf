@@ -1,3 +1,4 @@
+import { validate } from 'class-validator';
 import { UserService } from './../shared/user/user.service';
 import { Controller, Get, Res, Req, Next, Body, Post } from '@nestjs/common';
 import * as passport from 'passport';
@@ -29,14 +30,29 @@ export class AuthController {
     if (user) {
       success = await this.loginUser(user, password, req);
     } else {
-      success = await this.registerUser(new User({ email, password }), req);
+      success = false;
     }
-
     if (success) {
       res.redirect('/user');
     } else {
       req.session.flash = { type: 'error', message: 'Login failed!' };
       res.redirect('/');
+    }
+  }
+
+  @Post('local/register')
+  async register(@Body('email') email, @Body('password') password, @Body('repeatPassword') repeatPassword, @Req() req, @Res() res) {
+    if (!password || !repeatPassword || repeatPassword !== password) {
+      req.session.flash = { type: 'error', message: 'Passwords do not match!' };
+      res.redirect('/register');
+    }
+    const user = new User({email, password});
+    const success = await this.registerUser(user, req);
+    if (success) {
+      res.redirect('/user');
+    } else {
+      req.session.flash = { type: 'error', message: 'Registration failed!' };
+      res.redirect('/register');
     }
   }
 

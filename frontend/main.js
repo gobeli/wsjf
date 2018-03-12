@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import draggable from 'vuedraggable'
 import Buefy from 'buefy'
-
 import routes from './routes';
 
 Vue.use(Buefy);
